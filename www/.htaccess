@@ -1,0 +1,68 @@
+# For security reasons, Option followsymlinks cannot be overridden.
+#Options +FollowSymLinks
+Options +SymLinksIfOwnerMatch
+
+# disallows a directory listing on directories that do not have an index file
+Options -Indexes 
+
+RewriteEngine On
+
+RewriteRule ^([a-z]+)$ $1.php
+RewriteRule ^([a-z]+).(html|HTML|phtml|PHTML|asp|ASP|jsp|JSP)$ $1.php
+
+# UNCOMMENT FOR PROD
+RewriteRule ^(.*)log$ /index.php
+
+# ERROR CODES:
+#400 - Bad Request
+#401 - Unauthorized
+#402 - Payment Required
+#403 - Forbidden
+#404 - Not Found
+#405 - Method Not Allowed
+#406 - Not Acceptable
+#407 - Proxy Authentication Required
+#408 - Request Timeout
+#409 - Conflict
+#410 - Gone
+#411 - Length Required
+#412 - Precondition Failed
+#413 - Request Entity Too Large
+#414 - Request-URI Too Long
+#415 - Unsupported Media Type
+#416 - Requested Range Not Satisfiable
+#417 - Expectation Failed
+#500 - Internal Server Error
+#501 - Not Implemented
+#502 - Bad Gateway
+#503 - Service Unavailable
+#504 - Gateway Timeout
+#505 - HTTP Version
+
+ErrorDocument 400 /index.php
+ErrorDocument 401 /index.php
+ErrorDocument 402 /index.php
+ErrorDocument 403 /index.php
+ErrorDocument 404 /index.php
+ErrorDocument 405 /index.php
+ErrorDocument 406 /index.php
+ErrorDocument 407 /index.php
+ErrorDocument 408 /index.php
+ErrorDocument 409 /index.php
+ErrorDocument 410 /index.php
+ErrorDocument 411 /index.php
+ErrorDocument 412 /index.php
+ErrorDocument 413 /index.php
+ErrorDocument 414 /index.php
+ErrorDocument 415 /index.php
+ErrorDocument 416 /index.php
+ErrorDocument 417 /index.php
+ErrorDocument 500 /index.php
+ErrorDocument 501 /index.php
+ErrorDocument 502 /index.php
+ErrorDocument 503 /index.php
+ErrorDocument 504 /index.php
+ErrorDocument 505 /index.php
+
+# Use PHP5.4 as default
+AddHandler application/x-httpd-php54 .php
