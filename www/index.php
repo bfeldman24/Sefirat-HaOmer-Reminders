@@ -185,12 +185,7 @@
 					   <a href="https://instagram.com/p/nwIe0kS-Sd/" class="icon alt fa-instagram">
 					       <span class="label">Instagram</span>
 					   </a>
-					</li>
-					<li>
-					   <a href="https://github.com/bfeldman24/Sefirat-HaOmer-Reminders" class="icon alt fa-github">
-					       <span class="label">GitHub</span>
-					   </a>
-					</li>
+					</li>					
 					<li>
 					   <a href="mailto:ben@bprowd.com" class="icon alt fa-envelope">
 					       <span class="label">Email</span>
