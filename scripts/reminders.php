@@ -67,7 +67,11 @@ while(! feof($userFile))
     
     if (!empty($user) && is_array($user)){    
             $email = $user[0];
-            $success = EmailController::sendReminder($email, $omerDayHebrew, $omerDayEnglish);
+            $success = false;
+            
+            if (!empty($email) && strpos($email, "@") !== false && strlen($email) > 8){ // 8 = strlen("ab@12.il")
+                $success = EmailController::sendReminder($email, $omerDayHebrew, $omerDayEnglish);
+            }
             
             $successMsg = $success ? "SUCCESS" : "FAILED";
             echo $successMsg . " - " . $email . "\n";
