@@ -187,7 +187,7 @@
 					   </a>
 					</li>
 					<li>
-					   <a href="https://github.com/cdwiegand/Counting-the-Omer/blob/master/res/values/strings.xml" class="icon alt fa-github">
+					   <a href="https://github.com/bfeldman24/Sefirat-HaOmer-Reminders" class="icon alt fa-github">
 					       <span class="label">GitHub</span>
 					   </a>
 					</li>
