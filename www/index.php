@@ -67,7 +67,7 @@
         					$emailSuccess = false;
         					$phoneSuccess = false;
         					
-        					if (!empty($email))
+        					if (!empty($email) && strlen($email) >= 8) // 8 = strlen("ab@12.il")
         					{
               					if(strpos($omerSignupContents, $email) === false){
               						$emailSuccess = fwrite($file, "\n" . $email . "," . $timestamp ) > 0;
@@ -83,7 +83,7 @@
               					}
         					}
         					
-        					if (!empty($phoneEmail))
+        					if (!empty($phoneEmail) && strlen($phoneEmail) >= 20) // 20 = strlen("1112223333@vmobl.com")
         					{
               					if(strpos($omerSignupContents, $phoneEmail) === false){
               					    $phoneSuccess = fwrite($file, "\n" . $phoneEmail . "," . $timestamp ) > 0;
@@ -119,7 +119,7 @@
 						<form id="signupForm" method="post" action="#signup">
 							<div class="row uniform 50% ">								
 								<div class="-3u 4u">    								
-									<input type="text" name="phone" id="phone" placeholder="Phone Number" maxlength="13" class="center-text" />
+									<input type="text" name="phone" id="phone" placeholder="Phone Number" maxlength="14" class="center-text" />
 									<input type="hidden" name="phoneEmail" id="phoneEmail" />
 								</div>
 								<div class="2u$">
