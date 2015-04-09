@@ -107,7 +107,7 @@
         					     echo '<span style="color:green;">Thanks!</span><br>';
         						 echo '<span style="color:green;"> You have successfully signed up to receive Sefirah reminders to your '.$methodOfNotification.'.</span>';
         					}else{
-        						 echo '<span style="color:red;"> Please try again!</span>';
+        						 echo '<br><span style="color:red;"> Please try again!</span>';
         					}
         					        					
         					fclose($file);
