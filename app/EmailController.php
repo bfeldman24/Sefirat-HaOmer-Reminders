@@ -21,9 +21,7 @@ class EmailController{
                         $omerDayHebrew . ". \r\n" . 
                         $omerDayEnglish . ". \r\n";  
         				
-        $headers = "From: \"Sefirat HaOmer\" <ben@bprowd.com>"; // \r\n" .
-        		    //"Reply-To: ben@bprowd.com \r\n";
-        		    //'Bcc: bfeldman24@gmail.com' . "\r\n";
+        $headers = "From: \"Sefirat HaOmer\" <ben@bprowd.com>";
         
         return self::sendEmail($email, $emailSubject, $emailMessage, $headers);		        
     }
@@ -35,9 +33,8 @@ class EmailController{
                         "To stop receiving these notifications go to http://omer.bprowd.com/unsubscribe \r\n \r\n" .                        
                         "- Sefirah Reminders";  
         				
-        $headers = "From: \"Sefirat HaOmer\" <ben@bprowd.com>"; // \r\n" .
-        		    //"Reply-To: ben@bprowd.com \r\n";
-        		    //'Bcc: bfeldman24@gmail.com' . "\r\n";
+        $headers = "From: \"Sefirat HaOmer\" <ben@bprowd.com> \r\n" .
+        		   "Bcc: ben@bprowd.com";
         
         return self::sendEmail($email, $emailSubject, $emailMessage, $headers);		        
     }   
@@ -48,9 +45,7 @@ class EmailController{
         $emailMessage = $email . " wants to unsubscribe \r\n" .                                        
                         "- Sefirah Reminders";  
         				
-        $headers = "From: \"Sefirat HaOmer\" <ben@bprowd.com>"; // \r\n" .
-        		    //"Reply-To: ben@bprowd.com \r\n";
-        		    //'Bcc: bfeldman24@gmail.com' . "\r\n";
+        $headers = "From: \"Sefirat HaOmer\" <ben@bprowd.com>";
         
         return self::sendEmail($to, $emailSubject, $emailMessage, $headers);		        
     }   
