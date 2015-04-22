@@ -15,13 +15,15 @@ class EmailController{
     private static $timeDelayInSeconds = 4;
     private static $emailLimit = 100;
     
-    public static function sendReminder($email, $omerDayHebrew, $omerDayEnglish){                
+    public static function sendReminder($email, $headerText, $omerDayHebrew, $omerDayEnglish){                
         $emailSubject = 'Sefirah Reminder!';    
-        $emailMessage = "Sefirah Reminder \n" . date("M jS, Y") . ": \r\n" .                                        
+        $emailMessage = $headerText . "\n" . date("n/j/Y") . ": \r\n" .                                        
                         $omerDayHebrew . ". \r\n" . 
                         $omerDayEnglish . ". \r\n";  
         				
-        $headers = "From: \"Sefirat HaOmer\" <ben@bprowd.com>";
+        $headers = "From: \"Sefirat HaOmer\" <ben@bprowd.com> \r\n";
+                           //"Bcc: ben@bprowd.com";
+
         
         return self::sendEmail($email, $emailSubject, $emailMessage, $headers);		        
     }

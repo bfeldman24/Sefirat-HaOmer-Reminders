@@ -7,15 +7,12 @@ header('Content-Type:text/plain');
 
 require_once(dirname(__FILE__) . '/../app/EmailController.php');
 
-// Get Sefirah Text
-$omerFileName = dirname(__FILE__) . '/../data/omer-count.csv';            					
-$omerFile = fopen($omerFileName,"r");
-
-
 if (date("Y") > 2015){
-    // Get day of the omer using the 2nd night of pesach 
+    // Get day of the omer from the hebrew date
+    // 1st day of Pesach (nissan 15th) = Day 0 of the Omer
+    // 2nd day of Pesasch = Day 1 of the Omer
     $hebYear = 3760 + date("Y"); // 3760 = 5775 - 2015
-    $jd = jewishtojd(8,15,$hebYear); // 2nd night of pesach - 1
+    $jd = jewishtojd(8,15,$hebYear);
     $timestamp = jdtounix($jd);
     $omerDay = date("z") - date("z", $timestamp); // z = day of the year out of 365
 }
@@ -23,13 +20,17 @@ else{
     $omerDay = date("z") - 92;    
 }
 
-$omerDayHebrew = null;
-$omerDayEnglish = null;
-
 // Exit if the omer is over
 if ($omerDay < 1 || $omerDay > 49){
     exit();   
 }
+
+
+// Get Sefirah Text
+$omerFileName = dirname(__FILE__) . '/../data/omer-count.csv';            					
+$omerFile = fopen($omerFileName,"r");
+$omerDayHebrew = null;
+$omerDayEnglish = null;
 
 while(! feof($omerFile))
 {
@@ -48,9 +49,15 @@ while(! feof($omerFile))
 
 fclose($omerFile);
 
+
+$headerText = "Sefirah Reminder";
+if (date("N") == 5){ // 5 = Friday
+    $headerText .= " for tonight (do not say now)";
+}
+
+echo $headerText . "\n";
 echo $omerDayHebrew . "\n";
 echo $omerDayEnglish . "\n";
-
 
 // Send Reminders to Users
 $signupFile = dirname(__FILE__) . '/../data/omer-signup.csv';            					
@@ -70,7 +77,7 @@ while(! feof($userFile))
             $success = false;
             
             if (!empty($email) && strpos($email, "@") !== false && strlen($email) > 8){ // 8 = strlen("ab@12.il")
-                $success = EmailController::sendReminder($email, $omerDayHebrew, $omerDayEnglish);
+                $success = EmailController::sendReminder($email, $headerText, $omerDayHebrew, $omerDayEnglish);
             }
             
             $successMsg = $success ? "SUCCESS" : "FAILED";
